@@ -1,0 +1,29 @@
+{% extends "base/base.html" %}
+
+{% block title %}Contacts{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container narrow">
+        <h1>Контакты</h1>
+        <p class="lead">Расскажите о задаче — подготовим предложение и сроки реализации.</p>
+        <div class="card">
+            <p><strong>Телефон:</strong> {{ site_settings.phone|default:"Уточните у менеджера" }}</p>
+            <p><strong>WhatsApp:</strong> {{ site_settings.whatsapp|default:"Напишите нам" }}</p>
+            <p><strong>Email:</strong> {{ site_settings.email|default:"hello@grace-agency.com" }}</p>
+            <p><strong>Адрес:</strong> {{ site_settings.address|default:"Ваш город" }}</p>
+            <p><strong>Часы работы:</strong> {{ site_settings.working_hours|default:"Пн–Пт, 9:00–19:00" }}</p>
+        </div>
+        {% if request.GET.success %}
+            <div class="card">
+                <p>Спасибо, мы свяжемся с вами.</p>
+            </div>
+        {% endif %}
+        <form method="post" class="card form-card">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-primary" type="submit">Отправить заявку</button>
+        </form>
+    </div>
+</section>
+{% endblock %}
