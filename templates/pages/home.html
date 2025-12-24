@@ -96,4 +96,21 @@
         <a class="btn btn-primary" href="/contacts/">Получить консультацию</a>
     </div>
 </section>
+
+<section class="section">
+    <div class="container narrow">
+        <h2>Оставить заявку</h2>
+        <p class="lead">Заполните форму, и мы вернёмся с расчётом и сроками.</p>
+        {% if request.GET.success %}
+            <div class="card">
+                <p>Спасибо, мы свяжемся с вами.</p>
+            </div>
+        {% endif %}
+        <form method="post" class="card form-card">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-primary" type="submit">Отправить заявку</button>
+        </form>
+    </div>
+</section>
 {% endblock %}

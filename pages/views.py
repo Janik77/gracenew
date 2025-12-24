@@ -1,8 +1,11 @@
 from django.views.generic import TemplateView
 
+from core.views import LeadRequestCreateView
 
-class HomeView(TemplateView):
+
+class HomeView(LeadRequestCreateView):
     template_name = "pages/home.html"
+    success_url = "/?success=1"
 
 
 class AboutView(TemplateView):
@@ -11,3 +14,7 @@ class AboutView(TemplateView):
 
 class ServicesView(TemplateView):
     template_name = "pages/services.html"
+
+
+class ContactsView(LeadRequestCreateView):
+    template_name = "pages/contacts.html"

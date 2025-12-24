@@ -14,10 +14,15 @@
             <p><strong>Адрес:</strong> {{ site_settings.address|default:"Ваш город" }}</p>
             <p><strong>Часы работы:</strong> {{ site_settings.working_hours|default:"Пн–Пт, 9:00–19:00" }}</p>
         </div>
+        {% if request.GET.success %}
+            <div class="card">
+                <p>Спасибо, мы свяжемся с вами.</p>
+            </div>
+        {% endif %}
         <form method="post" class="card form-card">
             {% csrf_token %}
             {{ form.as_p }}
-            <button class="btn btn-primary" type="submit">Send</button>
+            <button class="btn btn-primary" type="submit">Отправить заявку</button>
         </form>
     </div>
 </section>
