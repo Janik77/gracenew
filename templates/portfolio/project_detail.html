@@ -1,0 +1,16 @@
+{% extends "base/base.html" %}
+
+{% block title %}{{ project.title }}{% endblock %}
+
+{% block content %}
+<h1>{{ project.title }}</h1>
+<p>{{ project.short_description }}</p>
+<div>{{ project.description }}</div>
+{% if project.images.all %}
+    <ul>
+        {% for image in project.images.all %}
+            <li>{{ image.alt }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}
