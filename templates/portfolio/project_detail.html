@@ -3,14 +3,22 @@
 {% block title %}{{ project.title }}{% endblock %}
 
 {% block content %}
-<h1>{{ project.title }}</h1>
-<p>{{ project.short_description }}</p>
-<div>{{ project.description }}</div>
-{% if project.images.all %}
-    <ul>
-        {% for image in project.images.all %}
-            <li>{{ image.alt }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
+<section class="section">
+    <div class="container narrow">
+        <h1>{{ project.title }}</h1>
+        <p class="lead">{{ project.short_description }}</p>
+        <div class="card">
+            {{ project.description }}
+        </div>
+        {% if project.images.all %}
+            <div class="grid gallery-grid">
+                {% for image in project.images.all %}
+                    <div class="card">
+                        <p>{{ image.alt }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</section>
 {% endblock %}
